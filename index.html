@@ -1,215 +1,216 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Orçamento | LuisinhoCell</title>
+<meta charset="UTF-8">
+<title>Orçamento - Luisinho Cell</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f4f6f8;
-    }
+<style>
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#f2f4f7;
+}
 
-    /* ===== TOPO ===== */
-    .topo-site {
-      background:
-        linear-gradient(rgba(15,23,42,0.9), rgba(15,23,42,0.9)),
-        url("topo.jpg");
-      background-size: cover;
-      background-position: center;
-      padding: 40px 20px;
-      color: #fff;
-    }
+.topo{
+    background: linear-gradient(90deg, #0a2540, #0f6cbf);
+    padding:30px;
+    color:#fff;
+    position:relative;
+}
 
-    .topo-conteudo {
-      max-width: 900px;
-      margin: auto;
-    }
+.topo::after{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:url("topo.jpg") center/cover no-repeat;
+    opacity:0.25;
+}
 
-    .topo-site h1 {
-      margin: 0;
-      font-size: 36px;
-      font-weight: bold;
-    }
+.topo h1{
+    position:relative;
+    margin:0;
+    font-size:32px;
+    letter-spacing:1px;
+}
 
-    .topo-site h1 span {
-      color: #38bdf8;
-    }
+.topo p{
+    position:relative;
+    margin:5px 0 0;
+    font-size:14px;
+    opacity:0.9;
+}
 
-    .topo-site p {
-      margin: 10px 0 20px;
-      font-size: 18px;
-      color: #e5e7eb;
-    }
+.container{
+    max-width:900px;
+    margin:30px auto;
+    background:#fff;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
 
-    .badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
+.cabecalho{
+    display:flex;
+    justify-content:space-between;
+    border-bottom:2px solid #eee;
+    padding-bottom:15px;
+}
 
-    .badges span {
-      border: 2px solid #38bdf8;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 14px;
-      font-weight: bold;
-    }
+.cabecalho strong{
+    color:#0f6cbf;
+}
 
-    /* ===== CONTEÚDO ===== */
-    .container {
-      max-width: 900px;
-      background: #fff;
-      margin: 20px auto;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
+.box{
+    margin-top:20px;
+    display:flex;
+    gap:20px;
+}
 
-    h2 {
-      margin-top: 30px;
-    }
+.card{
+    flex:1;
+    border:1px solid #ddd;
+    border-radius:6px;
+    padding:15px;
+}
 
-    input, textarea {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
+.card h3{
+    margin-top:0;
+    font-size:14px;
+    text-transform:uppercase;
+    color:#0f6cbf;
+}
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 15px;
-    }
+input{
+    width:100%;
+    padding:8px;
+    margin-top:5px;
+    border:1px solid #ccc;
+    border-radius:4px;
+}
 
-    table th, table td {
-      border-bottom: 1px solid #ddd;
-      padding: 10px;
-      text-align: left;
-    }
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
 
-    table th {
-      background: #f1f1f1;
-    }
+th, td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+}
 
-    .total {
-      text-align: right;
-      font-size: 20px;
-      margin-top: 20px;
-    }
+th{
+    background:#f0f6ff;
+}
 
-    .total span {
-      color: #0ea5e9;
-      font-weight: bold;
-    }
+.total{
+    text-align:right;
+    font-size:20px;
+    margin-top:20px;
+    color:#0f6cbf;
+    font-weight:bold;
+}
 
-    .btn {
-      margin-top: 30px;
-      padding: 14px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      width: 100%;
-      background: #25d366;
-      color: #fff;
-    }
+.whats{
+    margin-top:30px;
+    text-align:center;
+}
 
-    @media (max-width: 600px) {
-      .topo-site h1 {
-        font-size: 26px;
-      }
-      .topo-site p {
-        font-size: 15px;
-      }
-    }
-  </style>
+.whats button{
+    background:#25d366;
+    border:none;
+    color:#fff;
+    padding:15px 25px;
+    font-size:16px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.whats button:hover{
+    background:#1ebe5d;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- TOPO -->
-  <header class="topo-site">
-    <div class="topo-conteudo">
-      <h1>LUISINHO <span>CELL</span></h1>
-      <p>Centro de Reparos Especializado em Microssoldagem Apple</p>
+<div class="topo">
+    <h1>LUISINHO CELL</h1>
+    <p>Centro de Reparos Especializado em Microsoldagem</p>
+</div>
 
-      <div class="badges">
-        <span>FACE ID</span>
-        <span>PLACAS</span>
-        <span>ANDROID</span>
-        <span>JBL</span>
-      </div>
+<div class="container">
+
+    <div class="cabecalho">
+        <div>
+            <strong>Prestador de Serviço</strong><br>
+            Luisinho Cell<br>
+            Téc. Luis Henrique Alves Rodrigues<br>
+            Av. Noroeste, 5088 – Box 134<br>
+            Campo Grande/MS<br>
+            WhatsApp: (67) 99270-5001
+        </div>
+
+        <div>
+            <strong>Orçamento Nº</strong><br>
+            <input value="2026-001">
+        </div>
     </div>
-  </header>
 
-  <!-- CONTEÚDO -->
-  <div class="container">
-    <h2>Dados do Cliente</h2>
-    <input id="cliente" placeholder="Nome do cliente">
-    <input id="modelo" placeholder="Modelo do aparelho">
+    <div class="box">
+        <div class="card">
+            <h3>Dados do Cliente</h3>
+            Cliente:
+            <input>
+            Aparelho / Modelo:
+            <input>
+        </div>
 
-    <h2>Serviço</h2>
+        <div class="card">
+            <h3>Forma de Pagamento</h3>
+            <input placeholder="Pix / Dinheiro / Cartão">
+        </div>
+    </div>
+
     <table>
-      <tr>
-        <th>Descrição</th>
-        <th>Qtd</th>
-        <th>Valor</th>
-      </tr>
-      <tr>
-        <td><input id="desc" value="Reparo de Placa"></td>
-        <td><input id="qtd" type="number" value="1"></td>
-        <td><input id="valor" type="number" value="0"></td>
-      </tr>
+        <tr>
+            <th>Descrição</th>
+            <th>Qtd</th>
+            <th>Valor Unit.</th>
+            <th>Subtotal</th>
+        </tr>
+        <tr>
+            <td><input value="Reparo de Placa"></td>
+            <td><input value="1"></td>
+            <td><input value="0"></td>
+            <td><input value="0"></td>
+        </tr>
     </table>
 
-    <h2>Observações / Laudo Técnico</h2>
-    <textarea id="obs"></textarea>
-
     <div class="total">
-      Total: R$ <span id="total">0,00</span>
+        Total: R$ 0,00
     </div>
 
-    <button class="btn" onclick="enviarWhats()">Enviar pelo WhatsApp</button>
-  </div>
+    <div class="whats">
+        <button onclick="enviarWhats()">
+            Enviar Orçamento pelo WhatsApp
+        </button>
+    </div>
 
-  <script>
-    function calcular() {
-      const qtd = Number(document.getElementById('qtd').value);
-      const valor = Number(document.getElementById('valor').value);
-      document.getElementById('total').innerText =
-        (qtd * valor).toFixed(2);
-    }
+</div>
 
-    document.getElementById('qtd').oninput = calcular;
-    document.getElementById('valor').oninput = calcular;
-
-    function enviarWhats() {
-      const cliente = document.getElementById('cliente').value;
-      const modelo = document.getElementById('modelo').value;
-      const desc = document.getElementById('desc').value;
-      const total = document.getElementById('total').innerText;
-      const obs = document.getElementById('obs').value;
-
-      const msg =
-        `*Orçamento LuisinhoCell*%0A` +
-        `Cliente: ${cliente}%0A` +
-        `Aparelho: ${modelo}%0A` +
-        `Serviço: ${desc}%0A` +
-        `Total: R$ ${total}%0A` +
-        `Obs: ${obs}`;
-
-      window.open(
-        `https://wa.me/5567992705001?text=${msg}`,
-        "_blank"
-      );
-    }
-  </script>
+<script>
+function enviarWhats(){
+    const msg = "Olá! Segue o orçamento da *Luisinho Cell*.";
+    window.open("https://wa.me/5567992705001?text="+encodeURIComponent(msg));
+}
+</script>
 
 </body>
 </html>
+
 
