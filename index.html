@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orçamento | LuisinhoCell</title>
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; background:#f4f6f8; margin:0; padding:20px; }
+    .container { max-width:900px; margin:auto; background:#fff; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,.1); padding:20px; }
+    header { display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #eaeaea; padding-bottom:15px; }
+    .logo { font-size:24px; font-weight:bold; }
+    .logo span { color:#00bcd4; }
+    .orcamento { text-align:right; }
+    h2 { margin-top:30px; }
+    .grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .box { background:#f9fafb; padding:15px; border-radius:8px; }
+    table { width:100%; border-collapse:collapse; margin-top:20px; }
+    table th, table td { border-bottom:1px solid #ddd; padding:10px; text-align:left; }
+    table th { background:#f1f1f1; }
+    .total { text-align:right; margin-top:20px; font-size:18px; }
+    .total strong { font-size:22px; color:#00bcd4; }
+    textarea, input { width:100%; padding:8px; margin-top:5px; border-radius:5px; border:1px solid #ccc; }
+    .actions { margin-top:30px; display:flex; gap:15px; }
+    button { padding:12px 20px; border:none; border-radius:8px; font-size:16px; cursor:pointer; }
+    .whats { background:#25d366; color:#fff; }
+    .pdf { background:#00bcd4; color:#fff; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">LUISINHO <span>CELL</span></div>
+      <div class="orcamento">
+        <strong>ORÇAMENTO</strong><br>
+        Nº <input id="numero" value="2026-001" />
+      </div>
+    </header>
+
+    <div class="grid">
+      <div class="box">
+        <strong>Prestador de Serviço</strong><br><br>
+        LuisinhoCell<br>
+        Téc: Luis Henrique Alves Rodrigues<br>
+        Av. Noroeste, 5088 – Box 134<br>
+        Campo Grande/MS<br>
+        WhatsApp: (67) 99270-5001
+      </div>
+      <div class="box">
+        <strong>Dados do Cliente</strong><br><br>
+        Cliente:<input id="cliente" />
+        Aparelho / Modelo:<input id="modelo" />
+      </div>
+    </div>
+
+    <h2>Serviço</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Descrição</th>
+          <th>Qtd</th>
+          <th>Valor Unit.</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input id="desc" value="Reparo de Placa" /></td>
+          <td><input id="qtd" type="number" value="1" /></td>
+          <td><input id="valor" type="number" value="0" /></td>
+          <td id="subtotal">0</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Observações / Laudo Técnico</h2>
+    <textarea id="obs"></textarea>
+
+    <div class="total">
+      Total: <strong>R$ <span id="total">0</span></strong>
+    </div>
+
+    <div class="actions">
+      <button class="whats" onclick="enviarWhats()">Enviar pelo WhatsApp</button>
+    </div>
+  </div>
+
+  <script>
+    function calcular() {
+      const qtd = Number(document.getElementById('qtd').value);
+      const valor = Number(document.getElementById('valor').value);
+      const sub = qtd * valor;
+      document.getElementById('subtotal').innerText = sub.toFixed(2);
+      document.getElementById('total').innerText = sub.toFixed(2);
+    }
+
+    document.getElementById('qtd').oninput = calcular;
+    document.getElementById('valor').oninput = calcular;
+
+    function enviarWhats() {
+      const cliente = document.getElementById('cliente').value;
+      const modelo = document.getElementById('modelo').value;
+      const desc = document.getElementById('desc').value;
+      const total = document.getElementById('total').innerText;
+      const obs = document.getElementById('obs').value;
+
+      const msg = `*Orçamento LuisinhoCell*%0ACliente: ${cliente}%0AAparelho: ${modelo}%0AServiço: ${desc}%0ATotal: R$ ${total}%0AObs: ${obs}`;
+      const fone = '5567992705001';
+      window.open(`https://wa.me/${fone}?text=${msg}`, '_blank');
+    }
+  </script>
+</body>
+</html>
