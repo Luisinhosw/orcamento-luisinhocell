@@ -1,1 +1,74 @@
-<!DOCTYPE html><html><head><meta charset='UTF-8'><title>LuisinhoCell Sistema</title></head><body><h1>LuisinhoCell Sistema Completo</h1><p>Versão inicial com módulos: Nova OS, Orçamento, Reparo, Pronto e Recibo.</p></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LuisinhoCell OS</title>
+<style>
+body{font-family:Arial;margin:0;background:#0b1220;color:#fff}
+header{background:#003566;padding:15px;text-align:center}
+nav{display:flex;gap:8px;flex-wrap:wrap;padding:10px;background:#001d3d}
+button{background:#00b4ff;border:none;color:#000;padding:10px;border-radius:6px;cursor:pointer}
+.card{background:#162033;margin:10px;padding:15px;border-radius:10px}
+input,textarea,select{width:100%;padding:8px;margin:4px 0;box-sizing:border-box}
+.page{display:none}.active{display:block}
+</style>
+</head>
+<body>
+<header><h1>LuisinhoCell - Sistema OS</h1></header>
+<nav>
+<button onclick="show('os')">Nova OS</button>
+<button onclick="show('orc')">Orçamento</button>
+<button onclick="show('rep')">Reparo</button>
+<button onclick="show('pronto')">Pronto</button>
+<button onclick="show('rec')">Recibo</button>
+</nav>
+
+<div id="os" class="page active card">
+<h2>Nova OS</h2>
+<input placeholder="Cliente">
+<input placeholder="WhatsApp">
+<input placeholder="Marca">
+<input placeholder="Modelo">
+<input placeholder="IMEI">
+<textarea placeholder="Defeito informado"></textarea>
+<p>Checklist</p>
+<label><input type="checkbox"> Liga</label>
+<label><input type="checkbox"> Touch</label>
+<label><input type="checkbox"> LCD</label>
+<label><input type="checkbox"> Wi‑Fi</label>
+<label><input type="checkbox"> Bluetooth</label>
+<button onclick="alert('OS salva localmente (modelo base)')">Salvar</button>
+</div>
+
+<div id="orc" class="page card">
+<h2>Orçamento</h2>
+<input placeholder="Peças">
+<input placeholder="Mão de obra">
+<input placeholder="Valor Total">
+</div>
+
+<div id="rep" class="page card">
+<h2>Em Reparo</h2>
+<textarea placeholder="Serviços executados"></textarea>
+</div>
+
+<div id="pronto" class="page card">
+<h2>Pronto para retirada</h2>
+<textarea>Olá! Seu aparelho está pronto para retirada na LuisinhoCell.</textarea>
+</div>
+
+<div id="rec" class="page card">
+<h2>Recibo</h2>
+<input placeholder="Valor Pago">
+<select><option>Pix</option><option>Dinheiro</option><option>Cartão</option></select>
+</div>
+
+<script>
+function show(id){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+}
+</script>
+</body>
+</html>
